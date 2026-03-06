@@ -37,39 +37,71 @@ The run script auto-detects what's available and benchmarks everything it finds.
 ## Prerequisites
 
 - GCC (or any C compiler)
+- Rust toolchain (for building alternative implementations from source)
 - System SQLite: `sudo apt-get install libsqlite3-dev` (headers + lib)
 
 If `libsqlite3-dev` is not available and you only have the runtime library (`libsqlite3.so.0`), place a copy of [`sqlite3.h`](https://sqlite.org/download.html) in `./include/` and the script will find it.
 
-## Manual build
+## Building targets from source
 
-### System SQLite
+### 1. System SQLite
 
 ```sh
+# Debian/Ubuntu
+sudo apt-get install libsqlite3-dev
+
+# Compile and run
 gcc -O2 benchmark.c -lsqlite3 -o benchmark_sqlite
 ./benchmark_sqlite 1000
 ```
 
-### Turso/libsql
+### 2. Turso/libsql
 
-Build libsql from source, then point at its headers and library:
+[Turso/libsql](https://github.com/tursodatabase/libsql) is an open-source fork of SQLite with extensions for replication and edge hosting. It exposes its own `libsql_*` C API.
 
 ```sh
+# Clone and build
 git clone https://github.com/tursodatabase/libsql
-cd libsql && cargo build --release && cd ..
+cd libsql
+cargo build --release
+cd ..
 
+# Compile the Turso-specific benchmark
 gcc -O2 benchmark_turso.c \
     -Ilibsql/bindings/c/include \
     -Llibsql/target/release \
     -lsql_experimental -lpthread -ldl -lm \
     -o benchmark_turso
 
+# Run
 LD_LIBRARY_PATH=libsql/target/release ./benchmark_turso 1000
 ```
 
-### Any other sqlite3-compatible library
+### 3. FrankenSQLite
 
-Any library that exports the standard `sqlite3_*` symbols:
+[FrankenSQLite](https://github.com/Dicklesworthstone/frankensqlite) is a ground-up Rust reimplementation of SQLite. It exposes a sqlite3-compatible C API (`libfsqlite_c_api.so`), so the standard `benchmark.c` works against it directly.
+
+```sh
+# Clone and build
+git clone https://github.com/Dicklesworthstone/frankensqlite
+cd frankensqlite
+cargo build --release
+cd ..
+
+# Compile benchmark against FrankenSQLite's C API
+gcc -O2 benchmark.c \
+    -I./include \
+    -Lfrankensqlite/target/release \
+    -lfsqlite_c_api \
+    -o benchmark_franken
+
+# Run
+LD_LIBRARY_PATH=frankensqlite/target/release ./benchmark_franken 1000
+```
+
+### 4. Any other sqlite3-compatible library
+
+Any library that exports the standard `sqlite3_*` symbols works with `benchmark.c`:
 
 ```sh
 gcc -O2 benchmark.c \
@@ -123,6 +155,7 @@ If SELECT BY ID time grows linearly with row count, the implementation uses `See
 - The benchmark uses `sqlite3_exec()` with string-formatted SQL rather than `sqlite3_bind_*()`. This keeps the code simple and also exercises the parser on every call, which is part of what a real workload does.
 - Results are wall-clock time via `gettimeofday()`. Run multiple times and take the median for stable numbers.
 - The database file is created fresh (any existing file is removed) and cleaned up after the run.
+- Absolute timings vary with system load and hardware. The ratios between implementations are what matter.
 
 ## License
 
