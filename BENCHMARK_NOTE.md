@@ -1,0 +1,1 @@
+All benchmarks were run on the same machine, same OS, same compiler flags (`-O2`), same PRAGMA settings (`journal_mode=WAL`, `synchronous=NORMAL`). Absolute timings vary with system load and hardware — the ratios are what matter. The benchmark source is available in this repository so you can reproduce the comparison on your own hardware.

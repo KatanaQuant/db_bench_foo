@@ -1,0 +1,10 @@
+benchmark_sqlite
+benchmark_turso_bin
+benchmark_custom
+benchmark_*[!.c]
+results_*.txt
+*.db
+*.db-wal
+*.db-shm
+*.o
+include/
