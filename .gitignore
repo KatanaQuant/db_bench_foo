@@ -8,3 +8,67 @@ results_*.txt
 *.db-shm
 *.o
 include/
+
+# perf data files
+perf_*.data
+perf_*.data.*
+perf.data
+perf.data.*
+
+# single-letter DB files (benchmark scratch databases)
+[A-F]
+[A-F]-wal
+
+# compiled benchmark executables
+benchmark_fsqlite*
+benchmark_limbo*
+benchmark_sqlite
+diagnostic_fsqlite
+diagnostic_sqlite
+explain_*[!.c]
+micro_fsqlite
+micro_limbo
+micro_sqlite
+micro_turso
+prof_*[!.c]
+correctness_fsqlite
+correctness_sqlite
+q10_q12_confirm_fsqlite
+q10_q12_confirm_sqlite
+q10_q12_deep_fsqlite
+q10_q12_deep_sqlite
+q10_q12_diag_fsqlite
+q10_q12_diag_sqlite
+q10_q12_prepcheck_fsqlite
+select_all_scale_fsqlite
+select_all_scale_limbo
+select_all_scale_sqlite
+select_by_id_fsqlite
+select_by_id_limbo
+select_by_id_sqlite
+tpcds_bench_sqlite
+tpcds_fsqlite*
+tpch_bench_fsqlite
+tpch_bench_sqlite
+tpch_fsqlite*
+txn_batch_f
+txn_batch_fsqlite
+txn_batch_s
+txn_batch_sqlite
+txn_insert_fsqlite
+txn_update_fsqlite
+update_batch_profile_fsqlite
+update_profile_fsqlite
+ycsb_bench_fsqlite
+ycsb_bench_sqlite
+ycsb_fsqlite*
+ycsb_limbo*
+ycsb_sqlite
+ycsb_turso
+
+# shared libraries
+libfsqlite_c_api.so
+
+# --help artifact (sqlite opened with --help flag as filename)
+--help
+--help-wal
