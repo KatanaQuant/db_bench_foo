@@ -194,6 +194,35 @@ gcc -O2 tpcds_bench.c -I./include -L$FSQL -lfsqlite_c_api -Wl,-rpath,$FSQL \
     -o tpcds_fsqlite
 ```
 
+### Turso (Limbo)
+
+Turso's Rust SQLite reimplementation also exposes a sqlite3-compatible C API.
+Build it from [github.com/tursodatabase/limbo](https://github.com/tursodatabase/limbo):
+
+```sh
+git clone https://github.com/tursodatabase/limbo && cd limbo && cargo build --release -p limbo-c
+TURSO=limbo/target/release
+
+gcc -O2 benchmark.c -I./include -L$TURSO -llimbo -Wl,-rpath,$TURSO \
+    -o benchmark_turso
+
+gcc -O2 ycsb_bench.c -I./include -L$TURSO -llimbo -Wl,-rpath,$TURSO \
+    -o ycsb_turso
+```
+
+### Micro aliases
+
+The `micro_*` binaries referenced in the article are `benchmark.c` compiled
+against each engine. They are the same binary as `benchmark_*` — the naming
+convention distinguishes them from the YCSB and TPC-H suites:
+
+```sh
+# These are equivalent:
+gcc -O2 benchmark.c -lsqlite3 -o micro_sqlite
+gcc -O2 benchmark.c -I./include -L$FSQL -lfsqlite_c_api -Wl,-rpath,$FSQL -o micro_fsqlite
+gcc -O2 benchmark.c -I./include -L$TURSO -llimbo -Wl,-rpath,$TURSO -o micro_turso
+```
+
 The `-DENGINE_LABEL` flag is required for the Q10/Q12 suite:
 
 ```sh
