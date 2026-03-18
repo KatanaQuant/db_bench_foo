@@ -1,6 +1,6 @@
 # bench
 
-Experiment infrastructure for benchmarking FrankenSQLite (also known as kqsqlite),
+Experiment infrastructure for benchmarking kqsqlite,
 Turso, and system SQLite against a common suite of workloads. All programs use the
 sqlite3 C API.
 
@@ -22,7 +22,7 @@ full-table SELECT, primary-key SELECT, UPDATE, DELETE, and a batched
 ```
 Usage: ./benchmark_<target> [record_count] [db_path]
        ./benchmark_sqlite 1000
-       ./benchmark_fsqlite 5000 :memory:
+       ./benchmark_kqsqlite 5000 :memory:
 ```
 
 Output: one line per operation showing total ms and records/sec, then a total.
@@ -48,7 +48,7 @@ reporting), Q12 (shipping modes). 30-second timeout per query.
 ```
 Usage: ./tpch_bench_<target> [db_path] [label]
        ./tpch_bench_sqlite :memory: SQLite
-       ./tpch_bench_fsqlite :memory: FrankenSQLite
+       ./tpch_bench_kqsqlite :memory: kqsqlite
 ```
 
 Output: per-query ms and row count, plus data-load timing broken down by table.
@@ -64,7 +64,7 @@ Schema includes: `date_dim`, `item`, `customer`, `customer_address`,
 ```
 Usage: ./tpcds_<target> [db_path] [label]
        ./tpcds_bench_sqlite :memory: SQLite
-       ./tpcds_fsqlite_latest :memory: FrankenSQLite
+       ./tpcds_kqsqlite_latest :memory: kqsqlite
 ```
 
 Output: per-query ms and row count.
@@ -77,7 +77,7 @@ Useful for separating fsync cost from engine cost.
 
 ```
 Usage: ./diagnostic_<target> <db_path>
-       ./diagnostic_fsqlite /tmp/diag.db
+       ./diagnostic_kqsqlite /tmp/diag.db
 ```
 
 **`correctness_check.c`** — Spot-checks query result correctness. Runs TPC-H Q10,
@@ -94,7 +94,7 @@ contribution.
 
 ```
 Usage: ./txn_batch_<target> [db_path]
-       ./txn_batch_fsqlite :memory:
+       ./txn_batch_kqsqlite :memory:
 ```
 
 **`select_all_scale.c`** — Measures `SELECT *` per-row cost at four scales
@@ -115,8 +115,8 @@ Compares `prepare-once / bind / step / reset` against string-formatted exec for
 both INSERT and SELECT paths.
 
 ```
-Usage: ./prof_bind_f [count] [db_path]
-       ./prof_bind_f 10000 :memory:
+Usage: ./prof_bind_kq [count] [db_path]
+       ./prof_bind_kq 10000 :memory:
 ```
 
 **`prof_bind_insert_only.c`** / **`prof_bind_select_only.c`** — Isolated insert
@@ -128,7 +128,7 @@ runs. Compile and run under `perf record -g` to collect flamegraph data.
 
 ### Q10/Q12 investigation suite
 
-These were written to diagnose why FrankenSQLite returned 0 rows for TPC-H Q10
+These were written to diagnose why kqsqlite returned 0 rows for TPC-H Q10
 and Q12. Each narrows the failure surface:
 
 | File | Purpose |
@@ -139,7 +139,7 @@ and Q12. Each narrows the failure surface:
 | `q10_q12_prepcheck.c` | Checks what `sqlite3_prepare_v2` returns for single-table vs multi-table queries |
 
 All four take no arguments and open `:memory:`. They are compiled with
-`-DENGINE_LABEL='"FrankenSQLite"'` or `'"SQLite"'` to tag output.
+`-DENGINE_LABEL='"kqsqlite"'` or `'"SQLite"'` to tag output.
 
 ### Explain tools
 
@@ -150,8 +150,8 @@ specific statements. Used to compare vdbe plans between engines.
 
 ## Build
 
-All targets compile to small binaries (~16–33 KB for fsqlite, ~1–5 MB for system
-SQLite which statically links the amalgamation). The `.so` at `libfsqlite_c_api.so`
+All targets compile to small binaries (~16–33 KB for kqsqlite, ~1–5 MB for system
+SQLite which statically links the amalgamation). The `.so` at `libkqsqlite_c_api.so`
 must be present at link time and at runtime.
 
 ### System SQLite
@@ -171,27 +171,28 @@ place `sqlite3.h` in `./include/` (already present) and link explicitly:
 gcc -O2 benchmark.c -I./include /usr/lib/x86_64-linux-gnu/libsqlite3.so.0 -o benchmark_sqlite
 ```
 
-### FrankenSQLite
+### kqsqlite
 
-FrankenSQLite exposes a sqlite3-compatible C API via `libfsqlite_c_api.so`.
-Set `FSQL` to the release directory:
+kqsqlite exposes a sqlite3-compatible C API via `libkqsqlite_c_api.so`.
+Set `KQSQL` to the release directory:
 
 ```sh
-# Point FSQL to the release directory of your FrankenSQLite/kqsqlite build:
-# git clone https://github.com/Dicklesworthstone/frankensqlite && cd frankensqlite && cargo build --release -p fsqlite-c-api
-FSQL=frankensqlite/target/release
+# Clone and build the C API shared library:
+# git clone https://github.com/KatanaQuant/kqsqlite && cd kqsqlite/src && cargo build --release -p kqsqlite-c-api
+# WARNING: a full `cargo build` of all 27 crates uses 8-12 GB RAM. Build only kqsqlite-c-api for benchmarks.
+KQSQL=kqsqlite/src/target/release
 
-gcc -O2 benchmark.c -I./include -L$FSQL -lfsqlite_c_api -Wl,-rpath,$FSQL \
-    -o benchmark_fsqlite
+gcc -O2 benchmark.c -I./include -L$KQSQL -lkqsqlite_c_api -Wl,-rpath,$KQSQL \
+    -o benchmark_kqsqlite
 
-gcc -O2 ycsb_bench.c -I./include -L$FSQL -lfsqlite_c_api -Wl,-rpath,$FSQL \
-    -o ycsb_fsqlite
+gcc -O2 ycsb_bench.c -I./include -L$KQSQL -lkqsqlite_c_api -Wl,-rpath,$KQSQL \
+    -o ycsb_kqsqlite
 
-gcc -O2 tpch_bench.c -I./include -L$FSQL -lfsqlite_c_api -Wl,-rpath,$FSQL \
-    -o tpch_bench_fsqlite
+gcc -O2 tpch_bench.c -I./include -L$KQSQL -lkqsqlite_c_api -Wl,-rpath,$KQSQL \
+    -o tpch_bench_kqsqlite
 
-gcc -O2 tpcds_bench.c -I./include -L$FSQL -lfsqlite_c_api -Wl,-rpath,$FSQL \
-    -o tpcds_fsqlite
+gcc -O2 tpcds_bench.c -I./include -L$KQSQL -lkqsqlite_c_api -Wl,-rpath,$KQSQL \
+    -o tpcds_kqsqlite
 ```
 
 ### Turso (Limbo)
@@ -219,15 +220,15 @@ convention distinguishes them from the YCSB and TPC-H suites:
 ```sh
 # These are equivalent:
 gcc -O2 benchmark.c -lsqlite3 -o micro_sqlite
-gcc -O2 benchmark.c -I./include -L$FSQL -lfsqlite_c_api -Wl,-rpath,$FSQL -o micro_fsqlite
+gcc -O2 benchmark.c -I./include -L$KQSQL -lkqsqlite_c_api -Wl,-rpath,$KQSQL -o micro_kqsqlite
 gcc -O2 benchmark.c -I./include -L$TURSO -llimbo -Wl,-rpath,$TURSO -o micro_turso
 ```
 
 The `-DENGINE_LABEL` flag is required for the Q10/Q12 suite:
 
 ```sh
-gcc -O2 -DENGINE_LABEL='"FrankenSQLite"' q10_q12_confirm.c -I./include \
-    -L$FSQL -lfsqlite_c_api -Wl,-rpath,$FSQL -o q10_q12_confirm_fsqlite
+gcc -O2 -DENGINE_LABEL='"kqsqlite"' q10_q12_confirm.c -I./include \
+    -L$KQSQL -lkqsqlite_c_api -Wl,-rpath,$KQSQL -o q10_q12_confirm_kqsqlite
 
 gcc -O2 -DENGINE_LABEL='"SQLite"' q10_q12_confirm.c -I./include -lsqlite3 \
     -o q10_q12_confirm_sqlite
@@ -239,9 +240,9 @@ gcc -O2 -DENGINE_LABEL='"SQLite"' q10_q12_confirm.c -I./include -lsqlite3 \
 gcc -O2 -DENGINE_LABEL='"SQLite"' correctness_check.c -I./include -lsqlite3 \
     -o correctness_sqlite
 
-gcc -O2 -DENGINE_LABEL='"FrankenSQLite"' correctness_check.c -I./include \
-    -L$FSQL -lfsqlite_c_api \
-    -Wl,-rpath,$FSQL -o correctness_fsqlite
+gcc -O2 -DENGINE_LABEL='"kqsqlite"' correctness_check.c -I./include \
+    -L$KQSQL -lkqsqlite_c_api \
+    -Wl,-rpath,$KQSQL -o correctness_kqsqlite
 ```
 
 ### Automated build and run
@@ -332,7 +333,7 @@ implementations are what matter. See `BENCHMARK_NOTE.md`.
 - OS: Linux (tested on Ubuntu 22.04, x86_64)
 - Compiler: GCC with `-O2`
 - System SQLite: `libsqlite3-dev` (or bundled `include/sqlite3.h` + runtime `.so`)
-- FrankenSQLite/kqsqlite: `libfsqlite_c_api.so` built from the Rust source
+- kqsqlite: `libkqsqlite_c_api.so` built from the Rust source
   (see Build section above for clone and build instructions)
 - Load average should be below 0.5 before running timed benchmarks
 - Benchmarks use `:memory:` by default to eliminate disk I/O variance
