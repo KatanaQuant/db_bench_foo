@@ -1,0 +1,24 @@
+=== TPC-DS Benchmark: SQLite ===
+Database: :memory:
+Scale: 1
+
+Creating schema...
+  Schema: 2.70 ms (14 tables)
+Generating data...
+  Data load: 28.66 ms
+
+--- TPC-DS Queries ---
+  Q3   Sales by Brand/Year            baseline join                 0.42 ms  (2 rows)
+  Q7   Promo Sales Analysis           5-table join                  0.15 ms  (0 rows)
+  Q1   Store Returns Excess           CTE + correlated subquery     0.71 ms  (0 rows)
+  Q6   Above-Avg Price Items          correlated subquery           6.38 ms  (0 rows)
+  Q98  Item Revenue Share             window function               0.47 ms  (41 rows)
+  Q44  Best/Worst Items by Profit     RANK window function          0.79 ms  (10 rows)
+  Q38  Cross-Channel Buyers           INTERSECT                     1.10 ms  (1 rows)
+  Q87  Store-Only Buyers              EXCEPT                        0.66 ms  (1 rows)
+  Q35  Multi-Channel Presence         EXISTS subqueries             1.85 ms  (50 rows)
+  Q5*  Cross-Channel Revenue          UNION ALL (no ROLLUP)         0.28 ms  (7 rows)
+  Q5R  ROLLUP Test                    GROUP BY ROLLUP           ERROR (prepare): no such function: ROLLUP
+  QSF  Subquery in FROM               derived table                 0.14 ms  (1 rows)
+
+Done.

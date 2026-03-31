@@ -42,10 +42,10 @@ static void sleep_ms(int ms) { usleep(ms * 1000); }
 #define FIELD_LENGTH     100
 #define KEY_PREFIX       "user"
 #define TABLE_NAME       "usertable"
-#define MAX_THREADS      8
-#define THREAD_COUNTS    4   /* test at 1, 2, 4, 8 */
+#define MAX_THREADS      32
+#define THREAD_COUNTS    6   /* test at 1, 2, 4, 8, 16, 32 */
 
-static const int thread_counts[THREAD_COUNTS] = {1, 2, 4, 8};
+static const int thread_counts[THREAD_COUNTS] = {1, 2, 4, 8, 16, 32};
 
 /* ---------- timing ---------- */
 static double now_ms(void) {
@@ -176,10 +176,10 @@ static void *worker(void *arg) {
         int key = scrambled_zipfian_next_r(&z, &seed);
         double r = (double)rand_r(&seed) / RAND_MAX;
         int is_update = (r >= 0.50);
+        int committed = 0, done = 0;
 
         if (ctx->use_concurrent) {
             /* BEGIN CONCURRENT transaction with retry on conflict */
-            int committed = 0;
             for (int attempt = 0; attempt < 10 && !committed; attempt++) {
                 int rc = exec_rc(db, "BEGIN CONCURRENT");
                 if (rc == SQLITE_BUSY) {
@@ -189,6 +189,7 @@ static void *worker(void *arg) {
                 }
                 if (rc != SQLITE_OK) {
                     /* BEGIN CONCURRENT not supported — fall back to BEGIN */
+                    fprintf(stderr, "WARNING: BEGIN CONCURRENT failed (rc=%d), falling back to BEGIN\n", rc);
                     exec(db, "BEGIN");
                 }
 
@@ -222,7 +223,6 @@ static void *worker(void *arg) {
             }
         } else {
             /* Autocommit mode — each op is its own transaction */
-            int done = 0;
             for (int attempt = 0; attempt < 10 && !done; attempt++) {
                 int rc;
                 if (is_update) {
@@ -253,9 +253,11 @@ static void *worker(void *arg) {
             }
         }
 
-        ctx->completed_ops++;
-        if (is_update) ctx->update_ops++;
-        else ctx->read_ops++;
+        if ((ctx->use_concurrent && committed) || (!ctx->use_concurrent && done)) {
+            ctx->completed_ops++;
+            if (is_update) ctx->update_ops++;
+            else ctx->read_ops++;
+        }
 
         /* 120s timeout */
         if (now_ms() - t0 > 120000.0) break;

@@ -1,0 +1,21 @@
+=== YCSB-A Concurrent Benchmark ===
+Database: /tmp/ycsb_conc_sq.db
+Mode: autocommit (WAL)
+Records: 1000, Ops/thread: 2000
+Workload: A (50% read, 50% update, Zipfian θ=0.99)
+
+--- Scaling ---
+   1 threads      47.8 ms     41861 ops/s  [ops:2000 R:1005 U:995 retries:0 aborts:0]
+   2 threads     133.7 ms     29911 ops/s  [ops:4000 R:2028 U:1972 retries:0 aborts:0]
+   4 threads     347.7 ms     23005 ops/s  [ops:8000 R:4011 U:3989 retries:0 aborts:0]
+   8 threads     649.2 ms     24647 ops/s  [ops:16000 R:8106 U:7894 retries:0 aborts:0]
+
+--- Retry with BEGIN CONCURRENT ---
+   1 threads      65.6 ms     30484 ops/s  [ops:2000 R:1005 U:995 retries:0 aborts:0]
+   2 threads     204.2 ms     19585 ops/s  [ops:4000 R:2028 U:1972 retries:0 aborts:0]
+   4 threads     378.6 ms     21129 ops/s  [ops:8000 R:4011 U:3989 retries:0 aborts:0]
+SQL error: database is locked
+  PRAGMA journal_mode=WAL
+   8 threads     642.7 ms     24897 ops/s  [ops:16000 R:8106 U:7894 retries:0 aborts:0]
+
+Done.

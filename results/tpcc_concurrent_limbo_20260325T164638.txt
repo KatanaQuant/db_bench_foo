@@ -1,0 +1,1271 @@
+=== TPC-C Concurrent Benchmark ===
+Database: /tmp/tpcc_conc_li.db
+Mode: autocommit (WAL)
+Warehouses: 1, Districts: 5, Txns/thread: 200
+Mix: 60% New Order, 40% Payment (Order Status skipped — crashes target)
+
+--- Scaling ---
+   1 threads      22.3 ms      8961 txn/s  [txns:200 new_order:123 payment:77 retries:0 aborts:0]
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3513 WHERE c_w_id=1 AND c_d_id=2 AND c_id=76
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+204 WHERE c_w_id=1 AND c_d_id=2 AND c_id=42
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4317 WHERE c_w_id=1 AND c_d_id=2 AND c_id=48
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (3, 1, 1, 7, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 1, 1, 1, 2188)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 1, 1, 2, 2846)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 1, 1, 3, 3387)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 1, 1, 4, 3670)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 1, 1, 5, 3513)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (7, 5, 1, 56, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 5, 1, 1, 5998)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 5, 1, 2, 9786)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 5, 1, 3, 1743)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 5, 1, 4, 390)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 5, 1, 5, 9581)
+   2 threads      85.2 ms      4695 txn/s  [txns:400 new_order:242 payment:158 retries:0 aborts:0]
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3513 WHERE c_w_id=1 AND c_d_id=2 AND c_id=76
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+204 WHERE c_w_id=1 AND c_d_id=2 AND c_id=42
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4317 WHERE c_w_id=1 AND c_d_id=2 AND c_id=48
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (4, 1, 1, 7, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+990 WHERE c_w_id=1 AND c_d_id=2 AND c_id=81
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 1, 1, 1, 2188)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (18, 3, 1, 47, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 1, 1, 2, 2846)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (18, 3, 1, 1, 7517)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 1, 1, 3, 3387)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 1, 1, 4, 3670)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (18, 3, 1, 2, 2498)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 1, 1, 5, 3513)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (18, 3, 1, 3, 8299)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (18, 3, 1, 4, 6120)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (18, 3, 1, 5, 1661)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (14, 5, 1, 55, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (1, 3, 1, 78, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 1, 9930)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 5, 1, 1, 6206)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 5, 1, 2, 2100)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 5, 1, 3, 8761)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 5, 1, 4, 7023)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 5, 1, 5, 5477)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (43, 4, 1, 92, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (43, 4, 1, 1, 4735)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (43, 4, 1, 2, 9526)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (43, 4, 1, 3, 4549)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (43, 4, 1, 4, 5638)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (43, 4, 1, 5, 3600)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+2175 WHERE c_w_id=1 AND c_d_id=1 AND c_id=90
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+752 WHERE c_w_id=1 AND c_d_id=1 AND c_id=43
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (50, 4, 1, 56, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (50, 4, 1, 1, 6314)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (50, 4, 1, 2, 321)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (50, 4, 1, 3, 3709)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (50, 4, 1, 4, 9613)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (50, 4, 1, 5, 3243)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (27, 1, 1, 26, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 1, 1, 1, 446)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 1, 1, 2, 3068)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 1, 1, 3, 2587)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 1, 1, 4, 3794)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 1, 1, 5, 6207)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 2, 3736)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 3, 6330)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 4, 5939)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 5, 8213)
+   4 threads     129.9 ms      6158 txn/s  [txns:800 new_order:487 payment:313 retries:0 aborts:0]
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+990 WHERE c_w_id=1 AND c_d_id=2 AND c_id=81
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3852 WHERE c_w_id=1 AND c_d_id=4 AND c_id=83
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4977 WHERE c_w_id=1 AND c_d_id=2 AND c_id=12
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (4, 3, 1, 78, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 3, 1, 1, 9930)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (3, 4, 1, 87, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 4, 1, 1, 9163)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 4, 1, 2, 8582)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 4, 1, 3, 6947)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 4, 1, 4, 4240)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (3, 4, 1, 5, 8333)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+762 WHERE c_w_id=1 AND c_d_id=1 AND c_id=91
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 3, 1, 2, 3736)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 3, 1, 3, 6330)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 3, 1, 4, 5939)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (4, 3, 1, 5, 8213)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (10, 5, 1, 9, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 5, 1, 1, 4431)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 5, 1, 2, 4958)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 5, 1, 3, 3155)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (8, 5, 1, 2, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 1, 1770)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 2, 299)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 3, 8161)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 4, 6623)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 5, 763)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (19, 4, 1, 24, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (15, 1, 1, 67, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (15, 1, 1, 1, 8876)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 4, 1, 1, 9494)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 4, 1, 2, 1779)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 4, 1, 3, 9904)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 4, 1, 4, 6451)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 4, 1, 5, 1419)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (1, 1, 1, 74, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 1, 1, 1, 9804)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 1, 1, 2, 6220)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 1, 1, 3, 1682)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 1, 1, 4, 9765)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 1, 1, 5, 5943)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (40, 3, 1, 36, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 1, 2577)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 2, 8475)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 3, 2517)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 4, 4163)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 5, 3232)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+474 WHERE c_w_id=1 AND c_d_id=5 AND c_id=93
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (15, 1, 1, 2, 6924)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (15, 1, 1, 3, 5180)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (15, 1, 1, 4, 985)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (15, 1, 1, 5, 5719)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+2258 WHERE c_w_id=1 AND c_d_id=3 AND c_id=32
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (40, 3, 1, 3, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (55, 5, 1, 16, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 1, 416)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (1, 3, 1, 47, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 5, 1, 4, 7964)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 5, 1, 5, 9856)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1625 WHERE c_w_id=1 AND c_d_id=4 AND c_id=40
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1652 WHERE c_w_id=1 AND c_d_id=4 AND c_id=48
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 1, 7517)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 2, 2498)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 3, 8299)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=2
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (63, 2, 1, 85, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (63, 2, 1, 1, 1443)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (63, 2, 1, 2, 9810)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (63, 2, 1, 3, 4397)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (63, 2, 1, 4, 1684)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (63, 2, 1, 5, 7469)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 4, 6120)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 3, 1, 5, 1661)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (72, 5, 1, 55, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (72, 5, 1, 1, 6206)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (72, 5, 1, 2, 2100)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (72, 5, 1, 3, 8761)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (72, 5, 1, 4, 7023)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (72, 5, 1, 5, 5477)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=2
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (70, 2, 1, 4, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (70, 2, 1, 1, 6715)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (70, 2, 1, 2, 3782)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (70, 2, 1, 3, 6317)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (70, 2, 1, 4, 1710)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (70, 2, 1, 5, 6861)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+691 WHERE c_w_id=1 AND c_d_id=2 AND c_id=73
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (75, 3, 1, 37, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 3, 1, 1, 1711)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 3, 1, 2, 9128)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 3, 1, 3, 2168)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 3, 1, 4, 3017)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 3, 1, 5, 8642)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (92, 5, 1, 37, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (92, 5, 1, 1, 6999)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (92, 5, 1, 2, 7947)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (92, 5, 1, 3, 8919)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (92, 5, 1, 4, 3659)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (92, 5, 1, 5, 1808)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 2, 4643)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 3, 4912)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3738 WHERE c_w_id=1 AND c_d_id=1 AND c_id=69
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+2312 WHERE c_w_id=1 AND c_d_id=1 AND c_id=21
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1433 WHERE c_w_id=1 AND c_d_id=5 AND c_id=19
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 4, 4687)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (40, 3, 1, 5, 1571)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (110, 3, 1, 39, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (110, 4, 1, 91, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 4, 1, 1, 8738)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 4, 1, 2, 7017)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 4, 1, 3, 8953)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 4, 1, 4, 87)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 4, 1, 5, 5658)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (8, 5, 1, 15, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 1, 1001)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 2, 3650)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 3, 8890)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 4, 4110)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 5, 1, 5, 3376)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+574 WHERE c_w_id=1 AND c_d_id=1 AND c_id=86
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4797 WHERE c_w_id=1 AND c_d_id=1 AND c_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (55, 5, 1, 1, 3689)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (55, 5, 1, 2, 8397)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 3, 1, 1, 8710)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (55, 5, 1, 3, 5936)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (55, 5, 1, 4, 2039)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 3, 1, 2, 7233)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (55, 5, 1, 5, 9310)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 3, 1, 3, 418)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4266 WHERE c_w_id=1 AND c_d_id=2 AND c_id=88
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 3, 1, 4, 4323)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (110, 3, 1, 5, 5419)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+121 WHERE c_w_id=1 AND c_d_id=4 AND c_id=70
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1493 WHERE c_w_id=1 AND c_d_id=5 AND c_id=23
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (131, 3, 1, 53, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (131, 3, 1, 1, 1398)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1749 WHERE c_w_id=1 AND c_d_id=2 AND c_id=56
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (137, 5, 1, 45, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 5, 1, 1, 5145)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 5, 1, 2, 1425)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 5, 1, 3, 1538)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 5, 1, 4, 7438)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 5, 1, 5, 4156)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3 WHERE c_w_id=1 AND c_d_id=1 AND c_id=70
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (131, 3, 1, 2, 6786)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (131, 3, 1, 3, 2072)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (131, 3, 1, 4, 9794)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (131, 3, 1, 5, 1374)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (147, 5, 1, 71, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (147, 5, 1, 1, 2153)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (147, 5, 1, 2, 812)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (147, 5, 1, 3, 4134)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (147, 5, 1, 4, 762)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (147, 5, 1, 5, 925)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+119 WHERE c_w_id=1 AND c_d_id=4 AND c_id=27
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (161, 3, 1, 98, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (161, 3, 1, 1, 3626)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (161, 3, 1, 2, 9700)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (161, 3, 1, 3, 4588)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (161, 3, 1, 4, 6051)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (161, 3, 1, 5, 9487)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3228 WHERE c_w_id=1 AND c_d_id=5 AND c_id=53
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1892 WHERE c_w_id=1 AND c_d_id=4 AND c_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+2751 WHERE c_w_id=1 AND c_d_id=2 AND c_id=83
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (174, 5, 1, 84, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (174, 5, 1, 1, 7270)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (174, 5, 1, 2, 2961)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (174, 5, 1, 3, 8798)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (174, 5, 1, 4, 4348)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (174, 5, 1, 5, 4871)
+   8 threads     247.9 ms      6454 txn/s  [txns:1600 new_order:959 payment:641 retries:0 aborts:0]
+
+--- Retry with BEGIN CONCURRENT ---
+   1 threads      28.9 ms      6932 txn/s  [txns:200 new_order:123 payment:77 retries:0 aborts:0]
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3513 WHERE c_w_id=1 AND c_d_id=2 AND c_id=76
+   2 threads      77.3 ms      5175 txn/s  [txns:400 new_order:242 payment:158 retries:0 aborts:0]
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1300 WHERE c_w_id=1 AND c_d_id=3 AND c_id=42
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1625 WHERE c_w_id=1 AND c_d_id=4 AND c_id=40
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3513 WHERE c_w_id=1 AND c_d_id=2 AND c_id=76
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+990 WHERE c_w_id=1 AND c_d_id=2 AND c_id=81
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+204 WHERE c_w_id=1 AND c_d_id=2 AND c_id=42
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4317 WHERE c_w_id=1 AND c_d_id=2 AND c_id=48
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (19, 3, 1, 47, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 3, 1, 1, 7517)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (19, 1, 1, 7, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 1, 1, 1, 2188)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 1, 1, 2, 2846)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 1, 1, 3, 3387)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 1, 1, 4, 3670)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 1, 1, 5, 3513)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1652 WHERE c_w_id=1 AND c_d_id=4 AND c_id=48
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 3, 1, 2, 2498)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 3, 1, 3, 8299)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 3, 1, 4, 6120)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (19, 3, 1, 5, 1661)
+   4 threads     136.7 ms      5852 txn/s  [txns:800 new_order:487 payment:313 retries:0 aborts:0]
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+990 WHERE c_w_id=1 AND c_d_id=2 AND c_id=81
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3513 WHERE c_w_id=1 AND c_d_id=2 AND c_id=76
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+204 WHERE c_w_id=1 AND c_d_id=2 AND c_id=42
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4977 WHERE c_w_id=1 AND c_d_id=2 AND c_id=12
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3299 WHERE c_w_id=1 AND c_d_id=1 AND c_id=76
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4317 WHERE c_w_id=1 AND c_d_id=2 AND c_id=48
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (7, 4, 1, 31, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 4, 1, 1, 4138)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+762 WHERE c_w_id=1 AND c_d_id=1 AND c_id=91
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (1, 5, 1, 15, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (9, 5, 1, 2, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 5, 1, 1, 1770)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 5, 1, 2, 299)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 5, 1, 3, 8161)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 5, 1, 4, 6623)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 5, 1, 5, 763)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 4, 1, 2, 1875)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 4, 1, 3, 2900)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 4, 1, 4, 4770)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 4, 1, 5, 7529)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 5, 1, 1, 1001)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 5, 1, 2, 3650)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 5, 1, 3, 8890)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 5, 1, 4, 4110)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 5, 1, 5, 3376)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (5, 1, 1, 7, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (5, 1, 1, 1, 2188)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (5, 1, 1, 2, 2846)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (5, 1, 1, 3, 3387)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (5, 1, 1, 4, 3670)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (5, 1, 1, 5, 3513)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (2, 1, 1, 7, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (2, 1, 1, 1, 4359)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (2, 1, 1, 2, 3643)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (2, 1, 1, 3, 7991)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (2, 1, 1, 4, 4645)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (2, 1, 1, 5, 9476)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (1, 4, 1, 86, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 4, 1, 1, 9851)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 4, 1, 2, 8740)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 4, 1, 3, 4242)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 4, 1, 4, 8959)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (1, 4, 1, 5, 1106)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (8, 4, 1, 24, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1973 WHERE c_w_id=1 AND c_d_id=2 AND c_id=36
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 1, 9494)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 2, 1779)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 3, 9904)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 4, 6451)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 5, 1419)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+440 WHERE c_w_id=1 AND c_d_id=3 AND c_id=76
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+474 WHERE c_w_id=1 AND c_d_id=5 AND c_id=93
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (11, 5, 1, 56, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (11, 5, 1, 1, 5998)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (11, 5, 1, 2, 9786)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (8, 4, 1, 38, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (10, 3, 1, 65, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 3, 1, 1, 5574)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+531 WHERE c_w_id=1 AND c_d_id=3 AND c_id=89
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 3, 1, 2, 4765)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 3, 1, 3, 8244)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 3, 1, 4, 8338)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (10, 3, 1, 5, 2406)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 1, 8421)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 2, 7779)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 3, 5310)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 4, 8325)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4083 WHERE c_w_id=1 AND c_d_id=1 AND c_id=7
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1592 WHERE c_w_id=1 AND c_d_id=5 AND c_id=30
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (8, 4, 1, 5, 7097)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (12, 3, 1, 3, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (14, 1, 1, 40, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=2
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (7, 2, 1, 40, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 2, 1, 1, 7673)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 2, 1, 2, 7311)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 2, 1, 3, 399)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 2, 1, 4, 1818)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (7, 2, 1, 5, 375)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=2
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (9, 2, 1, 26, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 2, 1, 1, 4202)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 2, 1, 2, 8806)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 2, 1, 3, 7834)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (11, 5, 1, 3, 1743)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 1, 1, 1, 343)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (11, 5, 1, 4, 390)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 2, 1, 4, 4202)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (9, 2, 1, 5, 2814)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 1, 1, 2, 8916)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 1, 1, 3, 412)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (16, 4, 1, 89, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 1, 1, 4, 1909)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+574 WHERE c_w_id=1 AND c_d_id=1 AND c_id=86
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (12, 5, 1, 31, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 5, 1, 1, 2856)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (11, 5, 1, 5, 9581)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=2
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (12, 2, 1, 56, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 2, 1, 1, 3489)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 2, 1, 2, 9261)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 2, 1, 3, 509)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (14, 1, 1, 5, 6111)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=2
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 2, 1, 4, 5434)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 2, 1, 5, 6396)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4797 WHERE c_w_id=1 AND c_d_id=1 AND c_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 5, 1, 2, 5699)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 3, 1, 1, 416)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 3, 1, 2, 4643)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 5, 1, 3, 9823)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1749 WHERE c_w_id=1 AND c_d_id=2 AND c_id=56
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (13, 2, 1, 77, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (13, 2, 1, 1, 3989)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (13, 2, 1, 2, 9814)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (13, 2, 1, 3, 7172)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (13, 2, 1, 4, 2199)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (13, 2, 1, 5, 8389)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 1, 4612)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 2, 3337)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 3, 9415)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 4, 8800)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 5, 2231)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 3, 1, 3, 4912)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 3, 1, 4, 4687)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 3, 1, 5, 1571)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4715 WHERE c_w_id=1 AND c_d_id=4 AND c_id=93
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (35, 4, 1, 91, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (35, 4, 1, 1, 8738)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+204 WHERE c_w_id=1 AND c_d_id=5 AND c_id=30
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (35, 4, 1, 2, 7017)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (25, 3, 1, 70, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (54, 5, 1, 95, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 5, 1, 4, 2115)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (12, 5, 1, 5, 5432)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (16, 4, 1, 92, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 1, 6674)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 2, 1828)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 3, 8654)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 4, 5811)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (16, 4, 1, 5, 1081)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (35, 4, 1, 3, 8953)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (35, 4, 1, 4, 87)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (35, 4, 1, 5, 5658)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (27, 4, 1, 69, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 4, 1, 1, 7750)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 4, 1, 2, 6400)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 4, 1, 3, 6236)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 4, 1, 4, 7191)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (27, 4, 1, 5, 6426)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (25, 3, 1, 1, 7277)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (25, 3, 1, 2, 2150)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (25, 3, 1, 3, 3424)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (25, 3, 1, 4, 6374)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (25, 3, 1, 5, 5513)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (54, 5, 1, 1, 5632)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (54, 5, 1, 2, 1606)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (54, 5, 1, 3, 7024)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (56, 4, 1, 33, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (54, 5, 1, 4, 7550)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (56, 4, 1, 26, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (54, 5, 1, 5, 7076)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 1, 3911)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 1, 3600)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 2, 7564)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 2, 4627)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 3, 5042)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 3, 5307)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 4, 9064)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 4, 2415)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 5, 4486)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 5, 9798)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (56, 3, 1, 83, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 1, 1537)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+59 WHERE c_w_id=1 AND c_d_id=5 AND c_id=2
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 2, 7169)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1984 WHERE c_w_id=1 AND c_d_id=3 AND c_id=87
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4693 WHERE c_w_id=1 AND c_d_id=3 AND c_id=61
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (56, 4, 1, 57, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 3, 3798)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 4, 3177)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 1, 8139)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 5, 7977)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 2, 9955)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 3, 7549)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 4, 4579)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 5, 7719)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+784 WHERE c_w_id=1 AND c_d_id=4 AND c_id=25
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (56, 4, 1, 9, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 1, 7756)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (56, 4, 1, 51, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (56, 4, 1, 13, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 1, 890)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 2, 9701)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 3, 546)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 4, 72)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 5, 5533)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (56, 3, 1, 77, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 1, 1685)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 2, 2271)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 3, 8690)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 4, 4365)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 3, 1, 5, 3814)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+537 WHERE c_w_id=1 AND c_d_id=1 AND c_id=68
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (75, 4, 1, 62, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 4, 1, 1, 3276)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 2, 5638)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 4, 1, 2, 7766)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 4, 1, 3, 4894)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 4, 1, 4, 6403)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (75, 4, 1, 5, 3011)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 3, 4014)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 4, 8638)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=2
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (74, 2, 1, 45, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (74, 2, 1, 1, 9009)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (74, 2, 1, 2, 2292)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (74, 2, 1, 3, 9241)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (74, 2, 1, 4, 9853)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (74, 2, 1, 5, 6084)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+752 WHERE c_w_id=1 AND c_d_id=4 AND c_id=89
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 5, 2603)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=1
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (73, 1, 1, 18, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (73, 1, 1, 1, 5685)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (73, 1, 1, 2, 7041)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (73, 1, 1, 3, 8508)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (73, 1, 1, 4, 9186)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (73, 1, 1, 5, 9570)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+4048 WHERE c_w_id=1 AND c_d_id=2 AND c_id=50
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=3
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (93, 3, 1, 40, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 1, 7076)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 2, 3197)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 3, 3879)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 4, 2152)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 5, 5593)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (90, 5, 1, 59, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (90, 5, 1, 1, 9039)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (90, 5, 1, 2, 4072)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (90, 5, 1, 3, 3768)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (90, 5, 1, 4, 9720)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (90, 5, 1, 5, 294)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (93, 3, 1, 36, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 1, 5169)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 2, 3377)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 3, 4981)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 4, 8320)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (93, 3, 1, 5, 3608)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (96, 4, 1, 68, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3295 WHERE c_w_id=1 AND c_d_id=4 AND c_id=100
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (96, 4, 1, 1, 6086)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (96, 4, 1, 2, 2057)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (96, 4, 1, 3, 8763)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (96, 4, 1, 4, 6820)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+2294 WHERE c_w_id=1 AND c_d_id=1 AND c_id=97
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (96, 4, 1, 5, 1008)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1922 WHERE c_w_id=1 AND c_d_id=3 AND c_id=82
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1923 WHERE c_w_id=1 AND c_d_id=3 AND c_id=72
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (109, 4, 1, 37, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 4, 1, 1, 5416)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 4, 1, 2, 4363)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 4, 1, 3, 5329)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 4, 1, 4, 175)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 4, 1, 5, 119)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 1, 5053)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (60, 4, 1, 60, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (60, 4, 1, 1, 8975)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (60, 4, 1, 2, 4572)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (60, 4, 1, 3, 1305)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 2, 7104)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (60, 4, 1, 4, 7331)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (60, 4, 1, 5, 199)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 3, 6280)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 4, 4939)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (56, 4, 1, 5, 7247)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+3999 WHERE c_w_id=1 AND c_d_id=3 AND c_id=36
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (108, 5, 1, 67, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (108, 5, 1, 1, 963)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (108, 5, 1, 2, 6719)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (108, 5, 1, 3, 8069)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (108, 5, 1, 4, 1312)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (108, 5, 1, 5, 439)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (100, 4, 1, 60, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (100, 4, 1, 1, 7544)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (100, 4, 1, 2, 5908)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (100, 4, 1, 3, 7950)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (100, 4, 1, 4, 9291)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (100, 4, 1, 5, 9223)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+2394 WHERE c_w_id=1 AND c_d_id=3 AND c_id=92
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=4
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (137, 4, 1, 98, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 4, 1, 1, 4536)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 4, 1, 2, 6745)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1704 WHERE c_w_id=1 AND c_d_id=2 AND c_id=86
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE district SET d_next_o_id=d_next_o_id+1 WHERE d_w_id=1 AND d_id=5
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO orders (o_id, o_d_id, o_w_id, o_c_id, o_ol_cnt) VALUES (109, 5, 1, 19, 5)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 5, 1, 1, 4836)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 5, 1, 2, 8861)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 5, 1, 3, 2358)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 5, 1, 4, 1518)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (109, 5, 1, 5, 6670)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 4, 1, 3, 417)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  UPDATE customer SET c_balance=c_balance+1279 WHERE c_w_id=1 AND c_d_id=1 AND c_id=20
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 4, 1, 4, 1479)
+SQL error: Database snapshot is stale. You must rollback and retry the whole transaction.
+  INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number, ol_amount) VALUES (137, 4, 1, 5, 9680)
+   8 threads     262.3 ms      6101 txn/s  [txns:1600 new_order:959 payment:641 retries:0 aborts:0]
+
+Done.

@@ -1,0 +1,34 @@
+=== TPC-H Benchmark: FrankenSQLite ===
+Database: :memory:
+
+Creating schema...
+  Schema: 4.82 ms
+Generating data...
+    region:   1 ms
+    nation:   9 ms
+    supplier: 5 ms
+    customer: 24 ms
+    part:     6 ms
+    partsupp: 25 ms
+    orders:   31 ms
+    lineitem: 121 ms
+    commit:   3 ms
+  Data load: 228.67 ms
+
+Row counts:
+  region:    5  (0 ms)
+  nation:    25
+  supplier:  10
+  customer:  50
+  part:      20
+  partsupp:  80
+  orders:    150
+  lineitem:  375
+
+--- TPC-H Queries ---
+  Q1  Pricing Summary Report                   2.64 ms  (3 rows)
+  Q3  Shipping Priority                     9755.86 ms  (0 rows)
+  Q4  Order Priority Checking                  0.58 ms  (0 rows)
+  Q5  Local Supplier Volume                memory allocation of 1056 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+timeout: the monitored command dumped core

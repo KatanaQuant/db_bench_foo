@@ -1,0 +1,13 @@
+=== TPC-DS Benchmark: FrankenSQLite ===
+Database: :memory:
+Scale: 1
+
+Creating schema...
+  Schema: 9.28 ms (14 tables)
+Generating data...
+  Data load: 827.63 ms
+
+--- TPC-DS Queries ---
+  Q3   Sales by Brand/Year            baseline join             memory allocation of 1584 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+timeout: the monitored command dumped core

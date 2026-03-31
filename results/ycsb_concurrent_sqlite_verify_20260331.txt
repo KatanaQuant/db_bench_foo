@@ -1,0 +1,27 @@
+=== YCSB-A Concurrent Benchmark ===
+Database: /tmp/ycsb_verify_sqlite.db
+Mode: autocommit (WAL)
+Records: 1000, Ops/thread: 2000
+Workload: A (50% read, 50% update, Zipfian θ=0.99)
+
+--- Scaling ---
+   1 threads      70.4 ms     28421 ops/s  [ops:2000 R:1005 U:995 retries:0 aborts:0]
+   2 threads     168.4 ms     23756 ops/s  [ops:4000 R:2028 U:1972 retries:0 aborts:0]
+   4 threads     310.3 ms     25786 ops/s  [ops:8000 R:4011 U:3989 retries:0 aborts:0]
+SQL error: database is locked
+  PRAGMA journal_mode=WAL
+   8 threads     561.7 ms     28483 ops/s  [ops:16000 R:8106 U:7894 retries:0 aborts:0]
+  16 threads    1066.1 ms     30015 ops/s  [ops:32000 R:16102 U:15898 retries:0 aborts:0]
+  32 threads    2312.0 ms     27682 ops/s  [ops:64000 R:32050 U:31950 retries:0 aborts:0]
+
+--- Retry with BEGIN CONCURRENT ---
+   1 threads      42.6 ms     46955 ops/s  [ops:2000 R:1005 U:995 retries:0 aborts:0]
+SQL error: database is locked
+  PRAGMA journal_mode=WAL
+   2 threads     109.8 ms     36442 ops/s  [ops:4000 R:2028 U:1972 retries:0 aborts:0]
+   4 threads     332.0 ms     24093 ops/s  [ops:8000 R:4011 U:3989 retries:0 aborts:0]
+   8 threads     681.4 ms     23480 ops/s  [ops:16000 R:8106 U:7894 retries:0 aborts:0]
+  16 threads    1364.0 ms     23461 ops/s  [ops:32000 R:16102 U:15898 retries:0 aborts:0]
+  32 threads    2399.0 ms     26678 ops/s  [ops:64000 R:32050 U:31950 retries:0 aborts:0]
+
+Done.

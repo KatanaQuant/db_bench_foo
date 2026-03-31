@@ -72,3 +72,4 @@ libfsqlite_c_api.so
 # --help artifact (sqlite opened with --help flag as filename)
 --help
 --help-wal
+build/

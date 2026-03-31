@@ -1,0 +1,52 @@
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+WARNING:  there is no transaction in progress
+=== YCSB-A Concurrent Benchmark (PostgreSQL) ===
+Connection: dbname=elle_test
+Isolation: SERIALIZABLE
+Records: 1000, Ops/thread: 2000
+Workload: A (50% read, 50% update, Zipfian)
+
+--- Scaling ---
+   1 threads    1064.7 ms      1878 ops/s  [ops:2000 R:1005 U:995 aborts:0]
+   2 threads    1309.2 ms      3055 ops/s  [ops:4000 R:2014 U:1986 aborts:43]
+   4 threads    1011.7 ms      7908 ops/s  [ops:8000 R:3999 U:4001 aborts:253]
+   8 threads    1236.6 ms     12939 ops/s  [ops:16000 R:7965 U:8035 aborts:1797]
+
+Done.

@@ -1,0 +1,47 @@
+=== Overlap Test: FrankenSQLite BEGIN ===
+=== Transaction Overlap Test ===
+Database: /tmp/overlap_verify_begin.db
+Mode: BEGIN (default)
+Threads: 4, Sleep: 100 ms each
+Expected if concurrent: ~100 ms
+Expected if serialized: ~400 ms
+
+--- Per-thread timing ---
+  Thread 0: begin=0.1ms commit=301.8ms total=301.9ms OK
+  Thread 1: begin=0.1ms commit=201.2ms total=201.3ms OK
+  Thread 2: begin=0.1ms commit=100.8ms total=100.9ms OK
+  Thread 3: begin=0.1ms commit=402.3ms total=402.4ms OK
+
+--- Result ---
+Wall clock: 407.6 ms
+Expected if concurrent: ~100 ms
+Expected if serialized: ~400 ms
+Ratio: 4.1x (1.0 = fully concurrent, 4.0 = fully serialized)
+
+SERIALIZED: Transactions queued. No concurrency.
+
+Done.
+
+=== Overlap Test: FrankenSQLite BEGIN CONCURRENT ===
+=== Transaction Overlap Test ===
+Database: /tmp/overlap_verify_conc.db
+Mode: BEGIN CONCURRENT
+Threads: 4, Sleep: 100 ms each
+Expected if concurrent: ~100 ms
+Expected if serialized: ~400 ms
+
+--- Per-thread timing ---
+  Thread 0: begin=0.1ms commit=100.8ms total=100.8ms OK
+  Thread 1: begin=0.1ms commit=301.8ms total=302.0ms OK
+  Thread 2: begin=0.1ms commit=402.3ms total=402.4ms OK
+  Thread 3: begin=0.1ms commit=201.5ms total=201.6ms OK
+
+--- Result ---
+Wall clock: 408.3 ms
+Expected if concurrent: ~100 ms
+Expected if serialized: ~400 ms
+Ratio: 4.1x (1.0 = fully concurrent, 4.0 = fully serialized)
+
+SERIALIZED: Transactions queued. No concurrency.
+
+Done.

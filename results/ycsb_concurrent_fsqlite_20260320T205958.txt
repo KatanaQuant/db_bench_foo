@@ -1,0 +1,19 @@
+=== YCSB-A Concurrent Benchmark ===
+Database: /tmp/ycsb_conc_fs.db
+Mode: autocommit (WAL)
+Records: 1000, Ops/thread: 2000
+Workload: A (50% read, 50% update, Zipfian θ=0.99)
+
+--- Scaling ---
+   1 threads    9059.3 ms       221 ops/s  [ops:2000 R:1005 U:995 retries:0 aborts:0]
+   2 threads   10703.7 ms       374 ops/s  [ops:4000 R:2028 U:1972 retries:0 aborts:0]
+   4 threads   13277.1 ms       603 ops/s  [ops:8000 R:4011 U:3989 retries:0 aborts:0]
+   8 threads    9018.7 ms      1774 ops/s  [ops:16000 R:8108 U:7892 retries:2 aborts:0]
+
+--- Retry with BEGIN CONCURRENT ---
+   1 threads   60852.7 ms        33 ops/s  [ops:2000 R:1005 U:995 retries:0 aborts:0]
+   2 threads   49229.4 ms        81 ops/s  [ops:4000 R:2028 U:1972 retries:0 aborts:0]
+   4 threads   39208.9 ms       204 ops/s  [ops:8000 R:4011 U:3989 retries:0 aborts:0]
+   8 threads   12549.9 ms      1275 ops/s  [ops:16000 R:8106 U:7894 retries:0 aborts:0]
+
+Done.

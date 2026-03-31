@@ -1,0 +1,23 @@
+=== TPC-C Benchmark: SQLite ===
+Database: /tmp/tpcc_run_sq.db
+
+Creating schema...
+  Schema: 2.03 ms (5 tables)
+Generating data...
+  Data load: 2.83 ms
+
+--- TPC-C Transactions ---
+=== TPC-C Benchmark: SQLite ===
+Database: /tmp/tpcc_run_sq.db
+
+Creating schema...
+  Schema: 2.03 ms (5 tables)
+Generating data...
+  Data load: 2.83 ms
+
+--- TPC-C Transactions ---
+  New Order      500 txns      79.34 ms    6302 txn/s
+  Payment        500 txns      18.70 ms   26740 txn/s
+  Order Status   200 txns      12.92 ms   15485 txn/s   (3-table join)
+
+Done.

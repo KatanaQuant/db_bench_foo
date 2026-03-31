@@ -34,9 +34,14 @@ single/                           Single-threaded benchmarks
   oltp/oltp_read_write.c          sysbench-style OLTP (prepared stmts, latency percentiles)
 
 concurrent/                       Multi-threaded benchmarks (MVCC scalability)
-  ycsb_concurrent.c               YCSB-A at 1/2/4/8 threads — core MVCC contention test
-  oltp_concurrent.c               OLTP read/write at 1/2/4/8 threads
-  tpcc_concurrent.c               TPC-C (New Order + Payment) at 1/2/4/8 threads
+  ycsb_concurrent.c               YCSB-A at 1-32 threads — core MVCC contention test
+  ycsb_concurrent_pg.c            YCSB-A against PostgreSQL at SERIALIZABLE isolation
+  oltp_concurrent.c               OLTP read/write at 1-8 threads
+  tpcc_concurrent.c               TPC-C (New Order + Payment) at 1-8 threads
+  overlap_test.c                   Transaction overlap detector (4 threads × 100ms sleep)
+  elle_write_skew_v2.c             Elle-style isolation test (conflict detection on shared data)
+  elle_write_skew_pg.c             Same isolation test against PostgreSQL SERIALIZABLE
+  separate_db_baseline.c           Separate-file baseline (SQLite db/thread vs shared)
 
 duckdb/                           DuckDB-specific (uses duckdb.h, not sqlite3.h)
   include/duckdb.h
@@ -69,9 +74,19 @@ results/                          Benchmark output (gitignored)
 
 | Benchmark | What it measures | Key insight |
 |-----------|-----------------|-------------|
-| **ycsb_concurrent** | YCSB-A (50/50 R/W) at 1-8 threads on hot keys | The core MVCC test. Write contention on shared data. |
+| **ycsb_concurrent** | YCSB-A (50/50 R/W) at 1-32 threads on hot keys | The core MVCC test. Write contention on shared data. |
+| **ycsb_concurrent_pg** | Same workload against PostgreSQL SERIALIZABLE | Gold standard comparison. Shows real SSI scaling + aborts. |
 | **oltp_concurrent** | OLTP txns at 1-8 threads | Multi-writer throughput scaling for realistic workloads. |
 | **tpcc_concurrent** | TPC-C (New Order + Payment) at 1-8 threads | Realistic concurrent OLTP. Skips Order Status (crashes). |
+
+### Isolation & correctness
+
+| Benchmark | What it measures | Key insight |
+|-----------|-----------------|-------------|
+| **overlap_test** | Can two write transactions exist at the same time? | 4 threads × 100ms sleep. Concurrent: ~100ms. Serialized: ~400ms. |
+| **elle_write_skew_v2** | Does conflict detection fire on contended data? | 4 threads withdrawing from shared accounts. Aborts = detection works. |
+| **elle_write_skew_pg** | Same test against PostgreSQL SERIALIZABLE | Baseline: PG produces aborts. FrankenSQLite produces zero. |
+| **separate_db_baseline** | Fair comparison: SQLite with 1 db/thread vs shared | Strips MVCC from the equation. Shows raw parallel I/O parity. |
 
 All concurrent benchmarks test two modes:
 - **autocommit/WAL** — standard SQLite behavior (single-writer serialization)
@@ -130,11 +145,23 @@ build/tpcc_bench_sqlite /tmp/tpcc.db SQLite
 build/tpcc_bench_fsqlite /tmp/tpcc.db FrankenSQLite
 
 # Concurrent (MUST use file path, not :memory:)
-build/ycsb_concurrent_sqlite /tmp/ycsb.db auto
-build/ycsb_concurrent_fsqlite /tmp/ycsb.db concurrent
+build/ycsb_concurrent_sqlite /tmp/ycsb.db
+build/ycsb_concurrent_fsqlite /tmp/ycsb.db
 
 build/oltp_concurrent_sqlite /tmp/oltp.db
-build/tpcc_concurrent_fsqlite /tmp/tpcc.db concurrent
+build/tpcc_concurrent_fsqlite /tmp/tpcc.db
+
+# Isolation & correctness
+build/overlap_fsqlite /tmp/overlap.db concurrent
+build/elle_write_skew_v2_fsqlite /tmp/elle.db concurrent
+
+# PostgreSQL comparison (requires running PG with elle_test db)
+build/ycsb_concurrent_pg
+build/elle_write_skew_pg
+
+# Separate-file baseline
+build/separate_db_sqlite
+build/separate_db_fsqlite
 ```
 
 ### Known issues

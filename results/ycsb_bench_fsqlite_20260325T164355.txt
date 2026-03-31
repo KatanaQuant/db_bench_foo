@@ -1,0 +1,17 @@
+=== YCSB Benchmark: SQLite ===
+Database: :memory:
+Records: 1000, Operations/workload: 5000
+Fields: 10 x 100 bytes = ~1000 bytes/record
+
+Loading 1000 records...
+  Load: 108.39 ms (9226 inserts/s)
+
+--- YCSB Workloads ---
+  A (Update Heavy)         1405.40 ms      3558 ops/s  [R:2477 U:2523 I:0 S:0 RMW:0]
+  B (Read Mostly)           243.95 ms     20496 ops/s  [R:4776 U:224 I:0 S:0 RMW:0]
+  C (Read Only)             143.38 ms     34873 ops/s  [R:5000 U:0 I:0 S:0 RMW:0]
+  D (Read Latest)           198.35 ms     25208 ops/s  [R:4772 U:0 I:228 S:0 RMW:0]
+  E (Short Ranges)         7275.36 ms       687 ops/s  [R:0 U:0 I:247 S:4753 RMW:0]
+  F (Read-Mod-Write)       6631.52 ms       754 ops/s  [R:2475 U:0 I:0 S:0 RMW:2525]
+
+Done.

@@ -1,0 +1,24 @@
+=== TPC-DS Benchmark: Limbo ===
+Database: :memory:
+Scale: 1
+
+Creating schema...
+  Schema: 9.18 ms (14 tables)
+Generating data...
+  Data load: 88.36 ms
+
+--- TPC-DS Queries ---
+  Q3   Sales by Brand/Year            baseline join                 0.21 ms  (2 rows)
+  Q7   Promo Sales Analysis           5-table join                  0.27 ms  (0 rows)
+  Q1   Store Returns Excess           CTE + correlated subquery     1.93 ms  (0 rows)
+  Q6   Above-Avg Price Items          correlated subquery           3.60 ms  (0 rows)
+  Q98  Item Revenue Share             window function               0.57 ms  (41 rows)
+  Q44  Best/Worst Items by Profit     RANK window function      ERROR (prepare): Parse error: no such function: RANK
+  Q38  Cross-Channel Buyers           INTERSECT                     5.94 ms  (1 rows)
+  Q87  Store-Only Buyers              EXCEPT                        3.68 ms  (1 rows)
+  Q35  Multi-Channel Presence         EXISTS subqueries            20.54 ms  (50 rows)
+  Q5*  Cross-Channel Revenue          UNION ALL (no ROLLUP)     ERROR (prepare): Parse error: ORDER BY is not supported for compound SELECTs yet
+  Q5R  ROLLUP Test                    GROUP BY ROLLUP           ERROR (prepare): Parse error: unknown function ROLLUP
+  QSF  Subquery in FROM               derived table                 0.61 ms  (1 rows)
+
+Done.

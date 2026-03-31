@@ -1,0 +1,11 @@
+=== OLTP Read/Write: :memory: ===
+Table size: 10000, Transactions: 1000
+...loading...
+  txn/s:    26
+  reads/s:  289
+  writes/s: 105
+  latency p50: 37.98 ms
+  latency p95: 47.68 ms
+  latency p99: 50.81 ms
+  latency max: 59.01 ms
+Duration: 38038.3 ms

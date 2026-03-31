@@ -1,0 +1,40 @@
+=== TPC-H Benchmark: SQLite ===
+Database: :memory:
+
+Creating schema...
+  Schema: 0.53 ms
+Generating data...
+    region:   0 ms
+    nation:   0 ms
+    supplier: 0 ms
+    customer: 0 ms
+    part:     0 ms
+    partsupp: 0 ms
+    orders:   1 ms
+    lineitem: 4 ms
+    commit:   0 ms
+  Data load: 5.72 ms
+
+Row counts:
+  region:    5  (0 ms)
+  nation:    25
+  supplier:  10
+  customer:  50
+  part:      20
+  partsupp:  80
+  orders:    150
+  lineitem:  375
+
+--- TPC-H Queries ---
+  Q1  Pricing Summary Report                   0.55 ms  (3 rows)
+  Q3  Shipping Priority                        0.18 ms  (0 rows)
+  Q4  Order Priority Checking                  0.04 ms  (1 rows)
+  Q5  Local Supplier Volume                    0.10 ms  (0 rows)
+  Q6  Forecasting Revenue Change               0.08 ms  (1 rows)
+  Q10 Returned Item Reporting                  0.13 ms  (6 rows)
+  Q12 Shipping Modes and Order Priority        0.11 ms  (2 rows)
+  Q13 Customer Distribution                    0.19 ms  (1 rows)
+  Q14 Promotion Effect                         0.04 ms  (1 rows)
+  Q19 Discounted Revenue (simplified)          0.05 ms  (1 rows)
+
+Done.

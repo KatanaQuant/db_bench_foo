@@ -1,0 +1,23 @@
+=== TPC-C Benchmark: Limbo ===
+Database: /tmp/tpcc_run_li.db
+
+Creating schema...
+  Schema: 4.19 ms (5 tables)
+Generating data...
+  Data load: 11.38 ms
+
+--- TPC-C Transactions ---
+=== TPC-C Benchmark: Limbo ===
+Database: /tmp/tpcc_run_li.db
+
+Creating schema...
+  Schema: 4.19 ms (5 tables)
+Generating data...
+  Data load: 11.38 ms
+
+--- TPC-C Transactions ---
+  New Order      500 txns     161.27 ms    3100 txn/s
+  Payment        500 txns      52.13 ms    9591 txn/s
+  Order Status   200 txns      42.57 ms    4698 txn/s   (3-table join)
+
+Done.

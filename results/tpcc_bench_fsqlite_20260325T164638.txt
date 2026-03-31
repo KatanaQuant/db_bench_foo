@@ -1,0 +1,23 @@
+=== TPC-C Benchmark: FrankenSQLite ===
+Database: /tmp/tpcc_run_fs.db
+
+Creating schema...
+  Schema: 2.26 ms (5 tables)
+Generating data...
+  Data load: 52.19 ms
+
+--- TPC-C Transactions ---
+=== TPC-C Benchmark: FrankenSQLite ===
+Database: /tmp/tpcc_run_fs.db
+
+Creating schema...
+  Schema: 2.26 ms (5 tables)
+Generating data...
+  Data load: 52.19 ms
+
+--- TPC-C Transactions ---
+  New Order      500 txns     446.09 ms    1121 txn/s
+  Payment        500 txns    5465.46 ms      91 txn/s
+  Order Status   200 txns    1016.57 ms     197 txn/s   (3-table join)
+
+Done.
